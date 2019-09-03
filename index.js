@@ -1,11 +1,12 @@
 // TODO: cleanup log statements
 const WebSocket = require("ws");
 const express = require("express");
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
 const server = new WebSocket.Server({
-  server: app.listen(8080, () => console.log("listening on 8080"))
+  server: app.listen(PORT, () => console.log(`listening on ${PORT}`))
 });
 
 server.on("connection", socket => {
