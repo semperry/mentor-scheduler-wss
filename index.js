@@ -13,7 +13,10 @@ server.on("connection", socket => {
   socket.on("message", message => {
     server.clients.forEach(client => {
       console.log(JSON.parse(message));
-      client.send(message);
+      // if(client !== socket && client.readyState === WebSocket.OPEN){
+      if (client !== socket) {
+        client.send(message);
+      }
     });
   });
 
